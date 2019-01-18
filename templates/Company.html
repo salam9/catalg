@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ company.name }}</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('createPhone', company_id = company.id )}}">
+				<button class="btn btn-default" id="New-Phone">
+					<span class="glyphicon glyphicon-phone" aria-hidden="true"></span> Add new Phone
+				</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+
+</div>
+
+	{% for i in items %}
+    	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-3">
+						<div class="menu-item">
+							<h3><a href = "{{url_for('showPhone', phone_id=i.id, company_id=i.company_id)}}" style="color:black" >{{i.name}}</a></h3>
+							<span class= "modelNo"><p>{{i.modelNo}}</p></span>
+							<p class="menu-price">{{i.price}}</p>
+							<a href='{{url_for('deletePhone', company_id = company.id, phone_id=i.id ) }}'> Delete Phone </a> | 
+							<a href='{{url_for('editPhone', company_id = company.id, phone_id=i.id ) }}'> Edit Phone </a>
+						</div>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	{% endfor %}
+	{% endblock %}
