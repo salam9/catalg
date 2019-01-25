@@ -90,7 +90,7 @@ session.add(motorola)
 session.commit()
 
 phone = Phone(
-    name="Apple iPhone XS Max", modelNo="A2102", price="$1,477.00",
+    name="Apple iPhone XS Max", modelNo="A2102", price="$147.00",
     launchYear=datetime.datetime.strptime('2018/11/19', '%Y/%m/%d').date(),
     company=apple)
 
